@@ -10,8 +10,9 @@ import SnapKit
 
 class HomeVC: BaseViewController {
     
-    let searchBar = {
+    lazy var searchBar = {
         let view = UISearchBar()
+        view.delegate = self
         view.searchTextField.leftView?.tintColor = .blue
         view.searchTextField.textColor = .red
         view.searchTextField.attributedPlaceholder = NSAttributedString(string: "검색어 입력", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
@@ -53,24 +54,41 @@ class HomeVC: BaseViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.dataSource = self
         view.delegate = self
+        view.prefetchDataSource = self
         view.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         view.showsVerticalScrollIndicator = false
         return view
     }()
     
+    let emptyLabel = {
+        let view = UILabel()
+        view.text = "검색어를 입력해주세요"
+        view.textColor = .gray
+        view.font = .systemFont(ofSize: 15)
+        view.textAlignment = .center
+        view.backgroundColor = .white
+        return view
+    }()
+    
     var videoList: [Document] = [] {
         didSet {
+            emptyLabel.isHidden = videoList.isEmpty ? false : true
             collectionView.reloadData()
         }
     }
     
+    lazy var viewTabGesture = {
+        return UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+    }()
+    
+    var page = 1
+    var isEnd = false  // 페이징 체크
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest(page: 1, query: "아이유")
     }
     
     private func callRequest(page: Int, query: String) {
-        
         KakaoAPIManager.shared.call(
             type: .video,
             parameterDic: [
@@ -79,9 +97,20 @@ class HomeVC: BaseViewController {
             ],
             responseData: KakaoVideo.self) { response in
                 self.videoList.append(contentsOf: response.documents)
+                self.isEnd = response.meta.isEnd
             } failHandler: { error in
                 print(error)
             }
+    }
+    
+    @objc
+    func tapHandler(_ sender: UITapGestureRecognizer) {
+        switch sender {
+        case viewTabGesture:
+            print("탭 제스쳐")
+        default:
+            print("default")
+        }
     }
     
     @objc
@@ -96,21 +125,22 @@ class HomeVC: BaseViewController {
         }
     }
     
-    override func configVC() {
-        
-    }
+    override func configVC() {}
     
     override func configNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
+//        appearance.backgroundEffect = UIBlurEffect()
+        appearance.backgroundColor = .cyan
         
+        UINavigationBar.appearance().isTranslucent = false
+        
+//        navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
 //        self.navigationItem.title = "와우"
         self.navigationItem.titleView = searchBar
-        
         navigationItem.rightBarButtonItems = [navAlarmBarButton, navMessageBarButton]
     }
     
@@ -119,10 +149,34 @@ class HomeVC: BaseViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 
-extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        videoList.removeAll()
+        page = 1
+        callRequest(page: page, query: searchBar.text!)
+        searchBar.endEditing(true)
+    }
+}
+
+extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if videoList.count - 1 == indexPath.row && page < 15 && !isEnd {
+                page += 1
+                callRequest(page: page, query: searchBar.text!)
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return videoList.count
     }

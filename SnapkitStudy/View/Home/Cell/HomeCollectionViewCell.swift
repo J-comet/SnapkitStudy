@@ -52,6 +52,11 @@ class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbImageView.image = nil
+    }
+    
     func configureCell(row: Document) {
         thumbImageView.layoutIfNeeded()
         thumbImageView.layer.cornerRadius = thumbImageView.frame.width / 10
@@ -75,23 +80,21 @@ class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
             make.height.equalToSuperview()
         }
         
-        titleLabel.backgroundColor = .blue
         containerView.addSubview(titleLabel)
         titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.leading.equalTo(thumbImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(8)
             
         }
         
-        contentLabel.backgroundColor = .orange
         containerView.addSubview(contentLabel)
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(6)
             make.leading.equalTo(thumbImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(8)
             make.bottom.lessThanOrEqualToSuperview()
         }
         
