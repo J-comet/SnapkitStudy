@@ -42,12 +42,12 @@ class HomeVC: BaseViewController {
     
     lazy var collectionView = {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 8
+//        let spacing: CGFloat = 8
         let count: CGFloat = 1
         let width: CGFloat = UIScreen.main.bounds.width
         layout.itemSize = CGSize(width: width, height: width / 3)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 10         // 셀과셀 위 아래 최소 간격
+        layout.minimumLineSpacing = 8         // 셀과셀 위 아래 최소 간격
 //        layout.minimumInteritemSpacing = 10    // 셀과셀 좌 우 최소 간격
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -58,7 +58,7 @@ class HomeVC: BaseViewController {
         return view
     }()
     
-    var list = ["1","2","3","4","5","6","7","8","9","10"]
+    var list = ["1dasdjaskldjljdsfjajfajfkkl;sdfkaslfjdsjkfasdfsadfsadjfklsjklfjakljfsakljfaklsjfklasjfklsajklfjskl;fjaksljfklsjfklasjfklsdjfskljfklsjasjklasjlaskjlkasjkljaskljaklsjklsajkajsaslaklsjklasjklasklasjklasjlsakljklasjklasjklasklasjklasklajsljasas","2","3","4","5","6","7","8","9","10"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
