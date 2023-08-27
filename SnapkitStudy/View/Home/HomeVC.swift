@@ -58,11 +58,30 @@ class HomeVC: BaseViewController {
         return view
     }()
     
-    var list = ["1dasdjaskldjljdsfjajfajfkkl;sdfkaslfjdsjkfasdfsadfsadjfklsjklfjakljfsakljfaklsjfklasjfklsajklfjskl;fjaksljfklsjfklasjfklsdjfskljfklsjasjklasjlaskjlkasjkljaskljaklsjklsajkajsaslaklsjklasjklasklasjklasjlsakljklasjklasjklasklasjklasklajsljasas","2","3","4","5","6","7","8","9","10"]
+    var videoList: [Document] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        callRequest(page: 1, query: "아이유")
+    }
+    
+    private func callRequest(page: Int, query: String) {
         
+        KakaoAPIManager.shared.call(
+            type: .video,
+            parameterDic: [
+                "query" : query,
+                "page" : String(page)
+            ],
+            responseData: KakaoVideo.self) { response in
+                self.videoList.append(contentsOf: response.documents)
+            } failHandler: { error in
+                print(error)
+            }
     }
     
     @objc
@@ -105,19 +124,19 @@ class HomeVC: BaseViewController {
 
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
+        return videoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configureCell(row: list[indexPath.row])
+        cell.configureCell(row: videoList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row = list[indexPath.row]
+        let row = videoList[indexPath.row]
         print(row)
     }
     

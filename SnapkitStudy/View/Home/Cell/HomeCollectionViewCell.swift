@@ -6,11 +6,13 @@
 //
 
 import UIKit
+
 import SnapKit
+import Kingfisher
 
 class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
     
-    typealias T = String
+    typealias T = Document
     
     let containerView = {
         let view = UIView()
@@ -50,12 +52,14 @@ class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(row: String) {
+    func configureCell(row: Document) {
         thumbImageView.layoutIfNeeded()
         thumbImageView.layer.cornerRadius = thumbImageView.frame.width / 10
         
-        titleLabel.text = row
-        contentLabel.text = row
+        titleLabel.text = row.title
+        contentLabel.text = row.content
+        guard let imgPath = URL(string: row.thumbnail) else { return }
+        thumbImageView.kf.setImage(with: imgPath)
     }
     
     func setConstraints() {
@@ -74,6 +78,7 @@ class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
         titleLabel.backgroundColor = .blue
         containerView.addSubview(titleLabel)
         titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.leading.equalTo(thumbImageView.snp.trailing).offset(8)
@@ -83,7 +88,6 @@ class HomeCollectionViewCell: UICollectionViewCell, BaseCellProtocol {
         
         contentLabel.backgroundColor = .orange
         containerView.addSubview(contentLabel)
-        contentLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(6)
             make.leading.equalTo(thumbImageView.snp.trailing).offset(8)

@@ -24,6 +24,11 @@
 		C018F4D82A99DAC4002565B0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4D72A99DAC4002565B0 /* HomeCollectionViewCell.swift */; };
 		C018F4DA2A99DB50002565B0 /* BaseCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4D92A99DB50002565B0 /* BaseCellProtocol.swift */; };
 		C018F4DC2A9B1EDA002565B0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C018F4DB2A9B1EDA002565B0 /* .gitignore */; };
+		C018F4DF2A9B1F03002565B0 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4DE2A9B1F03002565B0 /* APIKey.swift */; };
+		C018F4E12A9B1F39002565B0 /* KakaoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4E02A9B1F39002565B0 /* KakaoAPIManager.swift */; };
+		C018F4E32A9B1FEC002565B0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4E22A9B1FEC002565B0 /* Endpoint.swift */; };
+		C018F4E62A9B2027002565B0 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4E52A9B2026002565B0 /* URL+Extension.swift */; };
+		C018F4EB2A9B29A0002565B0 /* KakaoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4EA2A9B29A0002565B0 /* KakaoVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,11 @@
 		C018F4D72A99DAC4002565B0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C018F4D92A99DB50002565B0 /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
 		C018F4DB2A9B1EDA002565B0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C018F4DE2A9B1F03002565B0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		C018F4E02A9B1F39002565B0 /* KakaoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIManager.swift; sourceTree = "<group>"; };
+		C018F4E22A9B1FEC002565B0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C018F4E52A9B2026002565B0 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		C018F4EA2A9B29A0002565B0 /* KakaoVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,9 @@
 		C018F4A52A99BDE0002565B0 /* SnapkitStudy */ = {
 			isa = PBXGroup;
 			children = (
+				C018F4E92A9B2997002565B0 /* Model */,
+				C018F4E42A9B201A002565B0 /* Extension */,
+				C018F4DD2A9B1EF7002565B0 /* API */,
 				C018F4CE2A99C828002565B0 /* Base */,
 				C018F4CB2A99C7CE002565B0 /* Protocol */,
 				C018F4C32A99C064002565B0 /* View */,
@@ -151,6 +164,32 @@
 				C018F4D72A99DAC4002565B0 /* HomeCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C018F4DD2A9B1EF7002565B0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C018F4DE2A9B1F03002565B0 /* APIKey.swift */,
+				C018F4E02A9B1F39002565B0 /* KakaoAPIManager.swift */,
+				C018F4E22A9B1FEC002565B0 /* Endpoint.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C018F4E42A9B201A002565B0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C018F4E52A9B2026002565B0 /* URL+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C018F4E92A9B2997002565B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C018F4EA2A9B29A0002565B0 /* KakaoVideo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C018F4E32A9B1FEC002565B0 /* Endpoint.swift in Sources */,
 				C018F4C82A99C27D002565B0 /* ProfileVC.swift in Sources */,
 				C018F4AB2A99BDE0002565B0 /* MainTabBarVC.swift in Sources */,
 				C018F4D22A99C8B4002565B0 /* ReusableViewProtocol.swift in Sources */,
@@ -241,9 +281,13 @@
 				C018F4DA2A99DB50002565B0 /* BaseCellProtocol.swift in Sources */,
 				C018F4A72A99BDE0002565B0 /* AppDelegate.swift in Sources */,
 				C018F4D82A99DAC4002565B0 /* HomeCollectionViewCell.swift in Sources */,
+				C018F4E62A9B2027002565B0 /* URL+Extension.swift in Sources */,
+				C018F4EB2A9B29A0002565B0 /* KakaoVideo.swift in Sources */,
 				C018F4A92A99BDE0002565B0 /* SceneDelegate.swift in Sources */,
 				C018F4D02A99C83C002565B0 /* BaseViewController.swift in Sources */,
 				C018F4CD2A99C816002565B0 /* BaseViewControllerProtocol.swift in Sources */,
+				C018F4E12A9B1F39002565B0 /* KakaoAPIManager.swift in Sources */,
+				C018F4DF2A9B1F03002565B0 /* APIKey.swift in Sources */,
 				C018F4CA2A99C28F002565B0 /* SearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
