@@ -11,7 +11,7 @@ import SnapKit
 class SearchaVC02: BaseViewController {
     
     lazy var label01 = ClickableLabel().setup {
-        $0.text = "많이 길고 긴 텍스트"
+        $0.text = "많이 길고 긴 텍스트 많이 길고 긴 텍스트 많이 길고 긴 텍스트 많이 길고 긴 텍스트 많이 길고 긴 텍스트"
         $0.textColor = .white
         $0.backgroundColor = .blue
     }
@@ -59,19 +59,23 @@ class SearchaVC02: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        label01.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label02.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
         view.addSubview(label01)
-        label01.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.height.equalTo(50)
+        label01.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.height.equalTo(50)
         }
 
         view.addSubview(label02)
-        label02.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(label01.snp.trailing)
-            make.trailing.equalToSuperview()
-            make.height.equalTo(50)
+        label02.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(label01.snp.trailing)
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(50)
         }
         remakeTest()
         
@@ -87,7 +91,7 @@ class SearchaVC02: BaseViewController {
                 make.height.equalTo(100)
             }
             UIView.animate(withDuration: 1.0) {
-                self.label01.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
         }
         
@@ -99,41 +103,41 @@ class SearchaVC02: BaseViewController {
                 make.trailing.equalToSuperview()
                 make.height.equalTo(100)
             }
-            UIView.animate(withDuration: 10.0) {
-                self.label02.layoutIfNeeded()
+            UIView.animate(withDuration: 5.0) {
+                self.view.layoutIfNeeded()
             }
         }
     }
     
     override func setConstraints() {
         
-        view.addSubview(mainStackView)
-        view.addSubview(tableView)
-        view.addSubview(topStackView)
-        
-        mainStackView.addArrangedSubview(connectBtn)
-        mainStackView.addArrangedSubview(writeBtn)
-        mainStackView.addArrangedSubview(disconnectBtn)
-       
-        topStackView.addArrangedSubview(button001)
-        
-        
-        mainStackView.snp.makeConstraints { make in
-            make.top.left.right.equalTo(view)
-            make.bottom.equalTo(view.snp.centerY).dividedBy(4)
-        }
-        
-
-        topStackView.snp.makeConstraints {
-            $0.top.equalTo(mainStackView.snp.bottom)
-            $0.left.right.equalToSuperview()
-            $0.bottom.equalTo(view.snp.centerY)
-        }
-
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(view.snp.centerY)
-            $0.left.bottom.right.equalToSuperview()
-        }
+//        view.addSubview(mainStackView)
+//        view.addSubview(tableView)
+//        view.addSubview(topStackView)
+//
+//        mainStackView.addArrangedSubview(connectBtn)
+//        mainStackView.addArrangedSubview(writeBtn)
+//        mainStackView.addArrangedSubview(disconnectBtn)
+//
+//        topStackView.addArrangedSubview(button001)
+//
+//
+//        mainStackView.snp.makeConstraints { make in
+//            make.top.left.right.equalTo(view)
+//            make.bottom.equalTo(view.snp.centerY).dividedBy(4)
+//        }
+//
+//
+//        topStackView.snp.makeConstraints {
+//            $0.top.equalTo(mainStackView.snp.bottom)
+//            $0.left.right.equalToSuperview()
+//            $0.bottom.equalTo(view.snp.centerY)
+//        }
+//
+//        tableView.snp.makeConstraints {
+//            $0.top.equalTo(view.snp.centerY)
+//            $0.left.bottom.right.equalToSuperview()
+//        }
     }
 }
 
