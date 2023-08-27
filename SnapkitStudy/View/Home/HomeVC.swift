@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class HomeVC: BaseViewController {
     
@@ -191,7 +192,10 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let row = videoList[indexPath.row]
-        print(row)
+        let youtubeUrl = URL(string: row.url)
+        guard let youtubeUrl else { return }
+        let safariView: SFSafariViewController = SFSafariViewController(url: youtubeUrl)
+        self.present(safariView, animated: true, completion: nil)
     }
     
 }
