@@ -208,11 +208,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     
 }
 
-
+#if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct MyViewController_PreViews: PreviewProvider {
+struct HomeVC_PreViews: PreviewProvider {
     static var previews: some View {
         HomeVC().showPreview(.iPhone12Pro)
-//        HomeVC().showPreview(.iPhone12Pro)
     }
 }
+#endif

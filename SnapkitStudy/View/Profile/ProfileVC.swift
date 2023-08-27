@@ -16,3 +16,12 @@ class ProfileVC: UIViewController {
     }
 
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+struct ProfileVC_PreViews: PreviewProvider {
+    static var previews: some View {
+        ProfileVC().showPreview(.iPhone12Pro)
+    }
+}
+#endif

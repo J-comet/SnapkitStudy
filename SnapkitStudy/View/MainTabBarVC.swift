@@ -28,7 +28,7 @@ class MainTabBarVC: UITabBarController {
         homeNav.tabBarItem.title = "홈"
         
         let searchNav = UINavigationController()
-        let search = SearchVC()
+        let search = SearchaVC02()
         searchNav.addChild(search)
         searchNav.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle")
         searchNav.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
