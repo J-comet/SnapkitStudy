@@ -62,7 +62,7 @@ class HomeVC: BaseViewController {
     }()
     
     let emptyLabel = {
-        let view = UILabel()
+        let view = ClickableLabel()
         view.text = "검색어를 입력해주세요"
         view.textColor = .gray
         view.font = .systemFont(ofSize: 15)
@@ -109,6 +109,7 @@ class HomeVC: BaseViewController {
         switch sender {
         case viewTabGesture:
             print("탭 제스쳐")
+            searchBar.endEditing(true)
         default:
             print("default")
         }
@@ -126,7 +127,12 @@ class HomeVC: BaseViewController {
         }
     }
     
-    override func configVC() {}
+    override func configVC() {
+        emptyLabel.onClick = {
+            print("click")
+            self.searchBar.endEditing(true)
+        }
+    }
     
     override func configNavigationBar() {
         let appearance = UINavigationBarAppearance()
