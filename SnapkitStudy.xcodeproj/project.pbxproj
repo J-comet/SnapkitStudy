@@ -30,6 +30,9 @@
 		C018F4E62A9B2027002565B0 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4E52A9B2026002565B0 /* URL+Extension.swift */; };
 		C018F4EB2A9B29A0002565B0 /* KakaoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4EA2A9B29A0002565B0 /* KakaoVideo.swift */; };
 		C018F4EE2A9B3999002565B0 /* ClickableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4ED2A9B3999002565B0 /* ClickableLabel.swift */; };
+		C018F4F02A9B3EB4002565B0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4EF2A9B3EB4002565B0 /* UIViewController+Extension.swift */; };
+		C018F4F22A9B40F1002565B0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4F12A9B40F1002565B0 /* UIView+Extension.swift */; };
+		C018F4F42A9B4227002565B0 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018F4F32A9B4227002565B0 /* UIViewPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		C018F4E52A9B2026002565B0 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		C018F4EA2A9B29A0002565B0 /* KakaoVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoVideo.swift; sourceTree = "<group>"; };
 		C018F4ED2A9B3999002565B0 /* ClickableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableLabel.swift; sourceTree = "<group>"; };
+		C018F4EF2A9B3EB4002565B0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C018F4F12A9B40F1002565B0 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C018F4F32A9B4227002565B0 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				C018F4E52A9B2026002565B0 /* URL+Extension.swift */,
+				C018F4EF2A9B3EB4002565B0 /* UIViewController+Extension.swift */,
+				C018F4F12A9B40F1002565B0 /* UIView+Extension.swift */,
+				C018F4F32A9B4227002565B0 /* UIViewPreview.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -284,10 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C018F4F02A9B3EB4002565B0 /* UIViewController+Extension.swift in Sources */,
 				C018F4E32A9B1FEC002565B0 /* Endpoint.swift in Sources */,
 				C018F4C82A99C27D002565B0 /* ProfileVC.swift in Sources */,
 				C018F4AB2A99BDE0002565B0 /* MainTabBarVC.swift in Sources */,
 				C018F4D22A99C8B4002565B0 /* ReusableViewProtocol.swift in Sources */,
+				C018F4F42A9B4227002565B0 /* UIViewPreview.swift in Sources */,
 				C018F4C52A99C260002565B0 /* HomeVC.swift in Sources */,
 				C018F4DA2A99DB50002565B0 /* BaseCellProtocol.swift in Sources */,
 				C018F4A72A99BDE0002565B0 /* AppDelegate.swift in Sources */,
@@ -295,6 +306,7 @@
 				C018F4E62A9B2027002565B0 /* URL+Extension.swift in Sources */,
 				C018F4EB2A9B29A0002565B0 /* KakaoVideo.swift in Sources */,
 				C018F4A92A99BDE0002565B0 /* SceneDelegate.swift in Sources */,
+				C018F4F22A9B40F1002565B0 /* UIView+Extension.swift in Sources */,
 				C018F4D02A99C83C002565B0 /* BaseViewController.swift in Sources */,
 				C018F4CD2A99C816002565B0 /* BaseViewControllerProtocol.swift in Sources */,
 				C018F4E12A9B1F39002565B0 /* KakaoAPIManager.swift in Sources */,

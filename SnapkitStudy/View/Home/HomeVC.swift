@@ -161,6 +161,8 @@ class HomeVC: BaseViewController {
         emptyLabel.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        
     }
 }
 
@@ -204,4 +206,13 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
         self.present(safariView, animated: true, completion: nil)
     }
     
+}
+
+
+import SwiftUI
+struct MyViewController_PreViews: PreviewProvider {
+    static var previews: some View {
+        HomeVC().showPreview(.iPhone12Pro)
+//        HomeVC().showPreview(.iPhone12Pro)
+    }
 }

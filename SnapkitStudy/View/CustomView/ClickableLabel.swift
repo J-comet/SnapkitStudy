@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 open class ClickableLabel: UILabel {
     var onClick: () -> Void = {}
@@ -19,11 +20,25 @@ open class ClickableLabel: UILabel {
         super.init(coder: coder)
     }
     
-    public convenience init() {
-        self.init(frame: .zero)
-    }
-    
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         onClick()
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+struct ClickableLabelPreview: PreviewProvider {
+    static var previews: some View {
+        UIViewPreview {
+            let label = ClickableLabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+            label.backgroundColor = .yellow
+            label.text = "Wow234151223"
+            return label
+        }.previewLayout(.device)
+        UIViewPreview {
+            let label = ClickableLabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+            label.text = "Wow212"
+            return label
+        }.previewLayout(.sizeThatFits)
+    }
+}
+#endif
