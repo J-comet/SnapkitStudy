@@ -8,19 +8,19 @@
 import UIKit
 import SwiftUI
 
-open class ClickableLabel: UILabel {
+class ClickableLabel: UILabel {
     var onClick: () -> Void = {}
     
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         isUserInteractionEnabled = true
     }
     
-    public required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         onClick()
     }
 }
